@@ -1,0 +1,26 @@
+<form action="{% url 'books.save' %}" method="post" style="text-align: center;">
+  {% csrf_token %}
+  <div style="margin: 20px;">
+    <label for="judul" style="font-weight: bold;">Catatan</label>
+    <br>
+    <input type="text" name="judul" style="padding: 10px; font-size: 1em; border-radius: 5px; border: 1px solid #f3d6d4; width: 50%; text-align: center;">
+  </div>
+
+  <div style="margin: 20px;">
+    <label for="publish" style="font-weight: bold;">Tanggal Input</label>
+    <br>
+    <input type="date" name="publish" style="padding: 10px; font-size: 1em; border-radius: 5px; border: 1px solid #f3d6d4; width: 50%; text-align: center;">
+  </div>
+
+  <hr>
+
+  <div>
+    <input type="submit" value="Simpan" style="padding: 10px 20px; background: #ff6f91; color: white; border-radius: 20px; text-decoration: none; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); font-size: 1.1em;">
+  </div>
+</form>
+
+<div style="margin-top: 20px;">
+  <a href="{% url 'books.index' %}" style="display: inline-block; padding: 10px 20px; background: #ff6f91; color: white; border-radius: 20px; text-decoration: none; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); font-weight: bold; font-size: 1.1em;">
+    Kembali
+  </a>
+</div>

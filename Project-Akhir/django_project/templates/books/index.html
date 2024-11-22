@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Notepad</title>
+  <style>
+    body {
+      font-family: 'Comic Sans MS', cursive, sans-serif;
+      text-align: center;
+      background-color: #f3f7fc;
+      color: #333;
+    }
+    h1 {
+      background: linear-gradient(to right, #ff6f91, #ff9472);
+      color: white;
+      padding: 10px;
+      border-radius: 10px;
+      display: inline-block;
+    }
+    table {
+      margin: 20px auto;
+      border-collapse: collapse;
+      width: 80%;
+      background: #fffcf2;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      border-radius: 12px;
+      overflow: hidden;
+    }
+    th, td {
+      padding: 15px;
+      text-align: left;
+      border-bottom: 2px solid #f3d6d4;
+    }
+    th {
+      background: #ff6f91;
+      color: white;
+      text-align: center;
+    }
+    tr:hover {
+      background-color: #ffe4e1;
+    }
+    a {
+      text-decoration: none;
+      color: #ff6f91;
+      font-weight: bold;
+    }
+    a:hover {
+      color: #ff9472;
+    }
+    .btn-add {
+      display: inline-block;
+      margin-top: 20px;
+      padding: 10px 20px;
+      background: #ff6f91;
+      color: white;
+      border-radius: 20px;
+      text-decoration: none;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    }
+    .btn-add:hover {
+      background: #ff9472;
+    }
+  </style>
+</head>
+<body>
+  <h1>Notepad</h1>
+  <hr>
+  <table border="1">
+    <tr>
+      <th>Ringkasan Catatan</th>
+      <th>Tanggal Input</th>
+      <th colspan="2">Uprek-uprek</th>
+    </tr>
+    {% if book_list %}
+        {% for buku in book_list %}
+        <tr>
+          <td>{{ buku.judul }}</td>
+          <td>{{ buku.publish }}</td>
+          <td><a href="{% url 'books.edit' buku.id %}">Edit Judul Catatan</a></td>
+          <td><a href="{% url 'books.delete' buku.id %}" 
+                onclick="return confirm('Hapus {{ buku.judul }} ?')">Hapus</a></td>
+        </tr>
+        {% endfor %}
+    {% else %}
+      <tr>
+        <td colspan="4">Tidak ada buku yang tersedia</td>
+      </tr>
+    {% endif %}
+  </table>
+  <a href="{% url 'books.add' %}" class="btn-add">Tambah Catatan Baru</a>
+</body>
+</html>
